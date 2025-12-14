@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Horizon 2.0 - Connect To Us</title>
+    <link rel="stylesheet" href="style_contact_integrated.css"> 
+    <link rel="icon" href="hh round.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://arkajainuniversity.ac.in/" target="_blank">
+            <img class="ajulogo" src="aju naac logo light.png" alt="ARKA JAIN University Logo">
+        </a>
+        <img class="hh-round" src="hh round.png" alt="Hack Horizon 2.0 Round Logo">
+        
+        <button class="menu-toggle" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
+        <ul class="navlink" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="whoweare.html">Who We Are</a></li>
+            <li><a href="contact.html">Connect To Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container2 contact-container" style="margin-top: 100px;">
+        <h1><i class="fas fa-satellite-dish"></i> Connect To Us</h1>
+        
+        <p class="form-description">
+            Fill out a short form below to receive the direct contact details of the concerned person and ensure your request is tracked immediately.
+        </p>
+
+        <div class="contact-grid">
+            
+            <div class="contact-card">
+                <i class="icon-header fas fa-hand-holding-usd"></i>
+                <h3>Sponsorship & Branding</h3>
+                <p>For inquiries regarding event sponsorship packages, brand visibility, and partnership proposals.</p>
+                <div class="contact-person">
+                    <button class="submit-button open-contact-modal" data-purpose="Sponsorship & Branding">
+                        <i class="fas fa-paper-plane"></i> Contact Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <i class="icon-header fas fa-university"></i>
+                <h3>Institution Participation</h3>
+                <p>For organizing participation from entire colleges/universities or academic tie-ups.</p>
+                <div class="contact-person">
+                    <button class="submit-button open-contact-modal" data-purpose="Institution Participation">
+                        <i class="fas fa-paper-plane"></i> Contact Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <i class="icon-header fas fa-headset"></i>
+                <h3>Participant & Registration Queries</h3>
+                <p>Need help with registration, team formation, deadlines, or hackathon rules?</p>
+                <div class="contact-person">
+                    <button class="submit-button open-contact-modal" data-purpose="Participant & Registration Queries">
+                        <i class="fas fa-paper-plane"></i> Contact Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <i class="icon-header fas fa-globe-americas"></i>
+                <h3>General Partnership & Media</h3>
+                <p>For community partnerships, media coverage, and non-sponsorship collaborations.</p>
+                <div class="contact-person">
+                    <button class="submit-button open-contact-modal" data-purpose="General Partnership & Media">
+                        <i class="fas fa-paper-plane"></i> Contact Now
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Request Contact Details</h2>
+            <p style="text-align: center; color: #b0b0b0; margin-bottom: 20px;">
+                Please provide your details below. The relevant contact information will be **displayed immediately** upon successful submission.
+            </p>
+            
+            <form id="contactForm" action="https://script.google.com/macros/s/AKfycbygLyoVpFfedj4Hqo28EKeTkzI9Iwubz7oeqZNcJRK5NisW0DHeBhWp9ZjccK2cFHs07A/exec" method="POST">
+                <div class="form-group">
+                    <label for="user-name">Your Full Name</label>
+                    <input type="text" id="user-name" name="user_name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Your Email Address</label>
+                    <input type="email" id="user-email" name="user_email" placeholder="youremail@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-organization">Organization/College Name</label>
+                    <input type="text" id="user-organization" name="user_organization" placeholder="ABC University / XYZ Company">
+                </div>
+                <div class="form-group">
+                    <label for="user-query">Brief Query/Message (Optional)</label>
+                    <textarea id="user-query" name="user_query" rows="3" placeholder="I would like to discuss a potential sponsorship of $500."></textarea>
+                </div>
+                
+                <input type="hidden" id="contact-purpose" name="contact_purpose" value="">
+
+                <button type="submit" class="submit-button" id="form-submit-btn">
+                    Submit & Receive Contact Details
+                </button>
+            </form>
+
+            <div id="successDetails" class="success-details" style="display: none;">
+                <p class="success-intro">Thank you! Your inquiry for **<span id="displayPurpose"></span>** has been logged. Please use the official details below:</p>
+                <div class="contact-result-card">
+                    <p class="result-name" id="resultName"></p>
+                    <p class="result-role" id="resultRole"></p>
+                    <p class="result-phone"><i class="fas fa-phone"></i> <span id="resultPhone"></span></p>
+                    <p class="result-email"><i class="fas fa-envelope"></i> <span id="resultEmail"></span></p>
+                </div>
+                <p class="form-note" style="margin-top: 15px; color: #b0b0b0;">
+                    Your full submission details have also been sent to your provided email address for reference.
+                </p>
+            </div>
+
+            <p id="form-message" class="form-note" style="display: none; font-weight: bold; margin-top: 15px;">
+                </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hack Horizon 2.0. All rights reserved. <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // --- General Navigation Toggle ---
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('open'); 
+            });
+            
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        menuToggle.classList.remove('open');
+                    }
+                });
+            });
+
+            // --- Contact Modal Logic ---
+            const modal = document.getElementById("contactModal");
+            const btns = document.querySelectorAll(".open-contact-modal");
+            const span = document.getElementsByClassName("close-button")[0];
+            const purposeField = document.getElementById("contact-purpose");
+            const contactForm = document.getElementById("contactForm");
+            const formMessage = document.getElementById("form-message");
+            const successDetails = document.getElementById("successDetails");
+            
+            const FORM_ACTION_URL = contactForm.action; 
+
+            // Function to open Modal and reset state
+            btns.forEach(btn => {
+                btn.onclick = function() {
+                    purposeField.value = btn.getAttribute('data-purpose');
+                    
+                    // Reset UI state
+                    contactForm.style.display = 'block';
+                    formMessage.style.display = 'none';
+                    successDetails.style.display = 'none';
+                    
+                    modal.style.display = "block";
+                    contactForm.reset(); 
+                }
+            });
+
+            // Close Modal on X click and outside click
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
+
+            // --- Form Submission Handler (Using Fetch to connect to Google Apps Script) ---
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Initial UI update for loading state
+                formMessage.textContent = "Submitting data and fetching contact details...";
+                formMessage.style.color = "#95cdff";
+                formMessage.style.display = "block";
+                contactForm.querySelector('.submit-button').disabled = true;
+
+                // Gather form data
+                const formData = new FormData(contactForm);
+                
+                // Convert FormData to URLSearchParams for submission to Apps Script
+                const params = new URLSearchParams(formData);
+
+                fetch(FORM_ACTION_URL, {
+                    method: 'POST',
+                    body: params
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Check if data was successfully returned (based on Apps Script's JSON response)
+                    if (data && data.name) {
+                        // 1. Update Success Message/Details
+                        document.getElementById('displayPurpose').textContent = purposeField.value;
+                        document.getElementById('resultName').textContent = data.name;
+                        document.getElementById('resultRole').textContent = data.role;
+                        document.getElementById('resultPhone').textContent = data.phone;
+                        document.getElementById('resultEmail').textContent = data.email;
+
+                        // 2. Hide Form, Show Success Card
+                        contactForm.style.display = 'none';
+                        successDetails.style.display = 'block';
+                        formMessage.style.display = 'none'; 
+                        
+                        // Optional: Scroll to the top of the modal content
+                        modal.querySelector('.modal-content').scrollTop = 0;
+
+                    } else {
+                        // Handle error if data is empty or malformed
+                        formMessage.textContent = "Error: Submission failed or contact details not found. Please try again.";
+                        formMessage.style.color = "#ff3333";
+                    }
+                })
+                .catch(error => {
+                    console.error('Submission error:', error);
+                    formMessage.textContent = "An internal error occurred during submission. Check the console for details.";
+                    formMessage.style.color = "#ff3333";
+                })
+                .finally(() => {
+                    // Restore button state
+                    contactForm.querySelector('.submit-button').disabled = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

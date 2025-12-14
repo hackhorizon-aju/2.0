@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Horizon 2.0</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" href="hh round.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://arkajainuniversity.ac.in/" target="_blank">
+            <img class="ajulogo" src="aju naac logo light.png" alt="ARKA JAIN University Logo">
+        </a>
+        <img class="hh-round" src="hh round.png" alt="Hack Horizon 2.0 Round Logo">
+        
+        <button class="menu-toggle" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
+        <ul class="navlink" id="nav-menu">
+            <li><a href="countdown.html">24Hr Count Down</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="whoweare.html">Who We Are?</a></li>
+            <li><a href="contact.html">Connect To Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container1">
+        <img class="hs" src="hs.png" alt="Hack Horizon 2.0 Main Logo/Title">
+        <h2>24 Hours of Innovation : <br>
+            Code, Create and Celebrate Together.
+        </h2>
+        <h3>Organised By School Of Engineering & IT, ARKA JAIN University. <br> In Collaboration With IBM, Google Developer Groups On Campus AJU and In Association With Code & Compute Society & IIC.</h3>
+    </div>
+    
+    <div class="container2">
+        <h1>Event Highlights</h1>
+        <ul>
+            <li>Exciting Prizes</li>
+            <li>Networking Opportunities with Industry Experts</li>
+            <li>Hands-on Workshops and Mentorship Sessions</li>
+            <li>Collaboration with Peers from Diverse Backgrounds</li>
+        </ul>
+    </div>
+    
+    <div class="container2 logo-section">
+        <h1>Our Collaborations</h1>
+        <div class="logo-grid">
+            <img src="IBM.png" alt="IBM Logo">
+            <img src="GDGOC AJU.png" alt="Google Developer Group On Campus AJU Logo">
+        </div>
+    </div>
+    
+    <div class="container2 logo-section">
+        <h1>Our Sponsors</h1>
+        <div class="logo-grid">
+            <img src="Sponsor ... .png" alt="Sponsor Logo 1">
+            <img src="Sponsor ... .png" alt="Sponsor Logo 2">
+            <img src="Sponsor ... .png" alt="Sponsor Logo 3">
+            <img src="Sponsor ... .png" alt="Sponsor Logo 4">
+            <img src="Sponsor ... .png" alt="Sponsor Logo 5">
+        </div>
+    </div>
+    
+    <div class="container2 logo-section">
+        <h1>Our Associations</h1>
+        <div class="logo-grid">
+            <img src="CCS.png" alt="Code & Compute Society Logo">
+            <img src="IIC.png" alt="IIC Logo">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            menuToggle.addEventListener('click', () => {
+                // Toggles the 'active' class on the menu list (opens/closes it)
+                navMenu.classList.toggle('active');
+                // Toggles the 'open' class on the button for the 'X' animation (optional)
+                menuToggle.classList.toggle('open'); 
+            });
+        });
+    </script>
+</body>
+</html>

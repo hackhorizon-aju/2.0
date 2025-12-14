@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Horizon 2.0 - Live Countdown</title>
+    <link rel="stylesheet" href="countdown.css"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="hh round.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style id="countdown-styles"></style> 
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://arkajainuniversity.ac.in/" target="_blank">
+            <img class="ajulogo" src="aju naac logo light.png" alt="ARKA JAIN University Logo">
+        </a>
+        <img class="hh-round" src="hh round.png" alt="Hack Horizon 2.0 Round Logo">
+        
+        <button class="menu-toggle" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
+        <ul class="navlink" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="whoweare.html">Who We Are</a></li>
+            <li><a href="contact.html">Connect To Us</a></li>
+            <li><a href="countdown.html">Live Countdown</a></li> </ul>
+    </nav>
+
+    <div class="container2 countdown-container" style="margin-top: 100px;">
+        <h1><i class="fas fa-stopwatch"></i> Hackathon Live Countdown</h1>
+        
+        <div id="countdown-display" class="countdown-display">
+            <div id="countdown-message" class="countdown-message">
+                Hackathon starts in:
+            </div>
+            <div id="timer-elements" class="timer-elements">
+                <div class="time-block"><span id="days">00</span><p>Days</p></div>
+                <div class="time-block"><span id="hours">00</span><p>Hours</p></div>
+                <div class="time-block"><span id="minutes">00</span><p>Minutes</p></div>
+                <div class="time-block"><span id="seconds">00</span><p>Seconds</p></div>
+            </div>
+        </div>
+        
+        <div id="finished-message" class="finished-message" style="display: none;">
+            <i class="fas fa-trophy"></i> HACKATHON TIME IS OVER! <i class="fas fa-trophy"></i>
+        </div>
+
+        <div id="status-message" class="status-message">
+            The timer is currently **not set**. Only the administrator can start the countdown.
+        </div>
+        
+        <div id="creator-panel" class="creator-panel" style="display: none;">
+            <h2><i class="fas fa-user-shield"></i> Admin Control Panel</h2>
+            <p>Use the buttons below to start or reset the 24-hour countdown.</p>
+            <button id="start-timer" class="control-button green-button">Start 24 Hour Countdown</button>
+            <button id="reset-timer" class="control-button red-button" disabled>Reset Timer</button>
+            <p class="admin-note">Warning: Starting the timer resets it for *all* viewers immediately.</p>
+        </div>
+
+        <button id="show-admin-login" class="submit-button" style="width: auto; margin-top: 30px;">
+            <i class="fas fa-lock"></i> Admin Login
+        </button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hack Horizon 2.0. All rights reserved. <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Toggle Logic (Keep this) ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('open'); 
+            });
+            
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        menuToggle.classList.remove('open');
+                    }
+                });
+            });
+
+            // ===========================================
+            // === COUNTDOWN AND CREATOR LOGIC ===
+            // ===========================================
+            
+            // --- Configuration ---
+            const ADMIN_SECRET_KEY = "HH@2026"; // !!! CHANGE THIS PASSWORD !!!
+            const DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+            const STORAGE_KEY = 'hackathonEndTime';
+
+            // --- Elements ---
+            const timerElements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+            const countdownMessage = document.getElementById('countdown-message');
+            const finishedMessage = document.getElementById('finished-message');
+            const timerDisplay = document.getElementById('timer-elements');
+            const statusMessage = document.getElementById('status-message');
+            const creatorPanel = document.getElementById('creator-panel');
+            const startButton = document.getElementById('start-timer');
+            const resetButton = document.getElementById('reset-timer');
+            const adminLoginButton = document.getElementById('show-admin-login');
+
+            let countdownInterval;
+
+            // --- Core Countdown Logic ---
+            function updateTimer() {
+                const endTime = localStorage.getItem(STORAGE_KEY);
+                
+                if (!endTime) {
+                    displayNotSet();
+                    return;
+                }
+
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    displayFinished();
+                    return;
+                }
+
+                // Calculate time units
+                const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result
+                timerElements.days.textContent = String(d).padStart(2, '0');
+                timerElements.hours.textContent = String(h).padStart(2, '0');
+                timerElements.minutes.textContent = String(m).padStart(2, '0');
+                timerElements.seconds.textContent = String(s).padStart(2, '0');
+
+                displayRunning();
+            }
+
+            // --- Display States ---
+            function displayNotSet() {
+                statusMessage.innerHTML = 'The timer is currently **not set**. Only the administrator can start the countdown.';
+                statusMessage.style.color = '#ff9900';
+                countdownMessage.textContent = 'Hackathon Countdown:';
+                timerDisplay.style.display = 'block';
+                finishedMessage.style.display = 'none';
+
+                // Set timer to 00:00:00:00
+                Object.values(timerElements).forEach(el => el.textContent = '00');
+                
+                resetButton.disabled = true;
+                if (creatorPanel.style.display === 'block') {
+                    startButton.disabled = false;
+                }
+            }
+
+            function displayRunning() {
+                const endTime = new Date(parseInt(localStorage.getItem(STORAGE_KEY))).toLocaleString();
+                statusMessage.innerHTML = `The timer is **running**. Hackathon ends at: ${endTime}`;
+                statusMessage.style.color = '#2bff00';
+                countdownMessage.textContent = 'Hackathon ends in:';
+                timerDisplay.style.display = 'flex'; // Use flex to show time blocks
+                finishedMessage.style.display = 'none';
+                resetButton.disabled = false;
+                startButton.disabled = true;
+            }
+
+            function displayFinished() {
+                statusMessage.innerHTML = 'The timer has **ended**. Final judging is underway!';
+                statusMessage.style.color = '#ff3333';
+                countdownMessage.textContent = '';
+                timerDisplay.style.display = 'none';
+                finishedMessage.style.display = 'block';
+                resetButton.disabled = false;
+                startButton.disabled = true;
+            }
+
+            // --- Control Handlers ---
+            function startTimer() {
+                const newEndTime = new Date().getTime() + DURATION_MS;
+                localStorage.setItem(STORAGE_KEY, newEndTime);
+                if (!countdownInterval) {
+                    countdownInterval = setInterval(updateTimer, 1000);
+                }
+                updateTimer(); // Initial call to update immediately
+                alert('Timer started for 24 hours!');
+            }
+
+            function resetTimer() {
+                localStorage.removeItem(STORAGE_KEY);
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+                updateTimer(); // Display the "not set" state
+                alert('Timer successfully reset!');
+            }
+
+            function creatorLogin() {
+                const password = prompt("Enter the Creator Secret Key to access the control panel:");
+                if (password === ADMIN_SECRET_KEY) {
+                    creatorPanel.style.display = 'block';
+                    adminLoginButton.style.display = 'none';
+                    alert("Welcome, Admin!");
+                    updateTimer(); // Ensure panel buttons are correctly disabled/enabled
+                } else if (password !== null) {
+                    alert("Invalid Secret Key.");
+                }
+            }
+
+            // --- Event Listeners ---
+            startButton.addEventListener('click', startTimer);
+            resetButton.addEventListener('click', resetTimer);
+            adminLoginButton.addEventListener('click', creatorLogin);
+
+            // --- Initialization ---
+            updateTimer();
+            if (localStorage.getItem(STORAGE_KEY)) {
+                 countdownInterval = setInterval(updateTimer, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

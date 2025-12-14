@@ -1,0 +1,1061 @@
+/* --- 0. Global Reset & Box Sizing --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: #0d1117; 
+    /* Ensure the path to your background image is correct */
+    background-image: url('Gemini_Generated_Image_5iv5sl5iv5sl5iv5.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e6edf3; 
+}
+
+/* --- 2. Navigation Bar (Desktop/Tablet) --- */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: rgba(13, 17, 23, 0.9); 
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.ajulogo {
+    height: 50px;
+    width: auto;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.hh-round {
+    height: 70px;
+    width: 70px;
+    margin-right: 20px;
+    border: 3px solid #ffffff; 
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.hh-round:hover {
+    transform: scale(1.05) rotate(360deg);
+    box-shadow: 0 0 15px #ffffff;
+}
+
+.navlink {
+    list-style: none;
+    display: flex; 
+    align-items: center;
+    margin-left: auto; 
+}
+
+.navlink li {
+    margin-left: 30px; 
+}
+
+.navlink li a {
+    text-decoration: none;
+    color: #e6edf3;
+    font-size: 18px;
+    font-weight: 500; 
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navlink li a:hover {
+    color: #0400ff; 
+    text-shadow: 0 0 10px rgba(4, 0, 255, 0.7); /* Using primary accent color */
+}
+
+/* --- 3. Hamburger Menu Base Styles (Desktop Hidden) --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    margin-left: auto; 
+    z-index: 1001; 
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* JS Toggled Classes */
+.navlink.active {
+    display: flex !important; 
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- 4. Container 1: Hero Section (Only on index.html) --- */
+.container1 {
+    padding-top: 30px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.hs {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%; 
+    height: 500px;
+    /* margin-bottom: 40px; */
+}
+
+.container1 h2 {
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8em; 
+    margin-top: -30px; 
+    line-height: 1.2;
+}
+
+.container1 h3 {
+    color: #9f9f9f; 
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: 30px;
+    font-size: 1.1em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- 5. Container 2: Sections & Highlights / Form Container --- */
+.container2 {
+    padding: 60px 20px;
+    margin: 50px auto;
+    max-width: 1100px; 
+    background-color: rgba(25, 30, 36, 0.7); 
+    border-radius: 12px;
+    border: 1px solid #1f3b4d; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.qr-code-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7; /* Light background for contrast */
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.qr-code-section h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.qr-code-box {
+    border: 3px solid #0400ff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 15px;
+}
+        
+.qr-code-box img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.upi-details {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+.upi-details strong {
+    color: #0400ff;
+}
+
+.container2.registration-container {
+    margin-top: 100px;
+    padding-bottom: 80px;
+}
+
+.container2 h1 {
+    text-align: center;
+    color: #0400ff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5em; 
+    margin-bottom: 50px;
+    text-shadow: 0 0 7px rgba(255, 255, 255, 0.8), 0 0 15px rgb(255, 255, 255);
+}
+
+.container2 h1::after {
+    content: '';
+    display: block;
+    width: 300px;
+    height: 6px;
+    background: #0400ff;
+    margin: 10px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(4, 0, 255, 0.8);
+}
+
+.container2 ul {
+    list-style-type: none;
+    padding: 0 40px;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container2 li {
+    color: #e6edf3;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 15px 10px;
+    padding: 20px;
+    background-color: rgba(30, 40, 50, 0.5); 
+    border-left: 5px solid #0400ff; 
+    border-radius: 8px;
+    flex: 1 1 45%; 
+    text-align: left;
+}
+
+.form-description {
+    text-align: center;
+    color: #b0b0b0;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.registration-container form {
+    max-width: 650px; /* Slightly wider form for desktop */
+    margin: 0 auto;
+    padding: 20px;
+    /* Add subtle container visual break */
+    background: rgba(30, 40, 50, 0.2); 
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    /* Using Flexbox for aligned labels/inputs on desktop */
+    display: flex;
+    flex-direction: column;
+}
+
+.copy-button {
+    background: #0400ff;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.copy-button:hover {
+    background: #0000e6;
+}
+
+.form-group label {
+    display: block;
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 1.05em;
+    /* Add a subtle text shadow for lift */
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #1f3b4d; 
+    background-color: #1a202c; 
+    color: #e6edf3;
+    border-radius: 8px; /* Slightly rounder edges */
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: vertical; 
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0400ff; /* Neon Blue border on focus */
+    box-shadow: 0 0 10px rgba(4, 0, 255, 0.8); /* Stronger neon glow on focus */
+    background-color: #151a22; /* Slightly darker background on focus */
+}
+
+.form-group textarea {
+    min-height: 100px; /* Ensure textarea is tall enough */
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 35px;
+    background-color: #0400ff; 
+    color: #e6edf3; 
+    border: none;
+    border-radius: 8px; /* Consistent rounding */
+    font-size: 1.25em;
+    font-weight: 700;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
+    /* Main button glow */
+    box-shadow: 0 0 15px rgba(4, 0, 255, 0.5); 
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #ffffff; 
+    color: #0400ff;
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 0 20px rgba(4, 0, 255, 0.8), 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger neon shadow and depth */
+}
+
+.form-note {
+    text-align: center;
+    font-size: 0.9em;
+    color: #9f9f9f;
+    margin-top: 20px;
+}
+
+
+/* 7. Logo Sections Styling (Your original styles) */
+.container2.logo-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container2.logo-section .logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.container2.logo-section img {
+    height: 300px; 
+    width: 300px;
+    display: inline-block;
+    margin: 15px 25px; 
+    /* filter: grayscale(100%) brightness(150%);  */
+    opacity: 0.7;
+    transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.container2.logo-section img:hover {
+    filter: none; 
+    opacity: 1;
+}
+
+/* 8. Footer Styles */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: rgba(13, 17, 23, 0.9);
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #0400ff;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- 9. Who We Are Section Styling (Updated) --- */
+.who-we-are-section .content {
+    /* Existing: max-width for the logo blocks */
+    width: 95%; /* Adjusting for team section appearance */
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.section-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px 20px;
+    background: rgba(30, 40, 50, 0.5); /* Darker background */
+    border-radius: 15px;
+    border: 1px solid #1f3b4d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.section-block h3 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #0400ff;
+    text-shadow: 0 0 5px rgba(4, 0, 255, 0.5);
+}
+
+.section-block p {
+    font-size: 1.1em;
+    color: #c9d1d9;
+    max-width: 700px;
+    line-height: 1.5;
+}
+
+.section-logo {
+    width: 200px; /* Smaller logo for the block */
+    height: 200px;
+    /* margin: 15px 0; */
+    /* border-radius: 50%; */
+    /* border: 3px solid #0400ff; */
+    /* object-fit: contain; */
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #0400ff, rgba(255, 255, 255, 0));
+    margin: 60px 0;
+    box-shadow: 0 0 10px rgba(4, 0, 255, 0.8);
+}
+
+
+/* Organizing Team Section Styles */
+.organizing-team {
+    padding: 0 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.organizing-team h2 {
+    color: #e6edf3;
+    font-size: 2.5em;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #0400ff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.organizing-team h2 i.icon {
+    margin-right: 10px;
+    color: #0400ff;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    /* margin-bottom: 40px; */
+}
+
+.team-card {
+    background-color: rgba(30, 40, 50, 0.8);
+    border: 1px solid #1f3b4d;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto;
+}
+
+.team-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.team-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #0400ff;
+}
+
+.team-card h4 {
+    font-size: 1.5em;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.team-card .designation {
+    font-size: 1.1em;
+    color: #95cdff;
+    /* margin-bottom: 15px; */
+    font-weight: 500;
+}
+
+.team-card .contact,
+.team-card .email {
+    font-size: 0.95em;
+    color: #c9d1d9;
+    /* margin-bottom: 5px; */
+}
+
+.team-card .email a {
+    color: #c9d1d9;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.team-card .email a:hover {
+    color: #0400ff;
+}
+
+.team-card .socials {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.team-card .socials a {
+    color: #e6edf3;
+    font-size: 1.5em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.team-card .socials a:hover {
+    transform: translateY(-2px) scale(1.1);
+}
+
+.team-card .socials .linkedin:hover { color: #0077B5; }
+.team-card .socials .github:hover { color: #ffffff; }
+.team-card .socials .instagram:hover { color: #E4405F; }
+
+
+/* --- New Styles for Participant Fields (Form) --- */
+.participant-fieldset {
+    border: 1px solid #0400ff; /* Neon border */
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    background-color: rgba(30, 40, 50, 0.3);
+}
+
+.participant-fieldset legend {
+    color: #0400ff;
+    font-size: 1.3em;
+    font-weight: 700;
+    padding: 0 10px;
+    border-bottom: none;
+    text-shadow: 0 0 5px rgba(4, 0, 255, 0.8);
+}
+
+.participant-fieldset .form-group {
+    /* Adjust internal form-groups for a tighter layout within fieldset */
+    margin-bottom: 15px;
+    /* Optional: use flex for horizontal alignment if desired */
+}
+
+/* Button to add/remove participants */
+.remove-participant-button{
+    background-color: #ffffff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-participant-button {
+    background-color: #0400ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-participant-button:hover, .remove-participant-button:hover {
+    background-color: #2bff00;
+    color: #0400ff;
+}
+
+.remove-participant-button {
+    background-color: #ff3333;
+    margin-bottom: 20px;
+}
+.remove-participant-button:hover {
+    background-color: #cc0000;
+    color: #ffffff;
+}
+
+/* --- Styles for Modal/Popup (Terms and Conditions / Contact Form) --- */
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1002; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #1a202c;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 30px;
+    border: 1px solid #1f3b4d;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(4, 0, 255, 0.5);
+    position: relative;
+    color: #e6edf3;
+}
+
+.modal-content h2 {
+    color: #0400ff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 15px; /* Space for scrollbar */
+}
+
+.modal-body ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.modal-body li {
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-size: 1.05em;
+}
+
+/* The Close Button */
+.close-button {
+    color: #e6edf3;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #ff3333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Checkbox group styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    /* Optional: Style the checkbox more with accent color */
+    accent-color: #0400ff; 
+}
+
+
+/* --- New Contact Page Styling (contact.html) --- */
+.contact-container {
+    padding: 60px 20px;
+}
+
+.contact-container h1 i {
+    color: #0400ff;
+    margin-right: 15px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Two columns on desktop */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-card {
+    background-color: rgba(30, 40, 50, 0.8);
+    border: 1px solid #1f3b4d;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    border-color: #0400ff;
+    box-shadow: 0 0 25px rgba(4, 0, 255, 0.8), 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contact-card .icon-header {
+    font-size: 3.5em;
+    color: #0400ff; /* Secondary accent for icons (Neon Green) */
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.contact-card h3 {
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.contact-person {
+    margin-top: 25px;
+    padding-top: 15px;
+}
+
+/* --- NEW SUCCESS SCREEN STYLES --- */
+
+.success-details {
+    padding: 20px;
+    border: 1px dashed #2bff00;
+    border-radius: 10px;
+    background-color: rgba(43, 255, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-details .success-intro {
+    text-align: center;
+    font-size: 1.1em;
+    color: #c9d1d9;
+    margin-bottom: 20px;
+}
+
+.success-details .success-intro span {
+    color: #2bff00;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(43, 255, 0, 0.5);
+}
+
+.contact-result-card {
+    background-color: #1a202c;
+    border: 2px solid #0400ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(4, 0, 255, 0.7);
+    text-align: left;
+}
+
+.result-name {
+    font-size: 1.6em;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.result-role {
+    font-size: 1.1em;
+    color: #95cdff;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1f3b4d;
+    padding-bottom: 10px;
+}
+
+.result-phone, .result-email {
+    font-size: 1.1em;
+    color: #e6edf3;
+    margin: 8px 0;
+}
+
+.result-phone i, .result-email i {
+    color: #2bff00;
+    margin-right: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- END NEW SUCCESS SCREEN STYLES --- */
+
+
+/* ================================================= */
+/* 📱 MEDIA QUERY FIXES FOR MOBILE DEVICES (max-width: 768px) */
+/* ================================================= */
+@media (max-width: 768px) {
+    /* --- Navbar Fixes --- */
+    .navbar {
+        flex-wrap: nowrap; 
+        justify-content: space-between; 
+        padding: 10px 10px; /* Reduced padding */
+        position: relative;
+    }
+
+    .ajulogo {
+        height: 35px; /* Smaller logo */
+        margin-right: 5px;
+        width: auto;
+    }
+
+    .hh-round {
+        height: 45px; /* Smaller logo */
+        width: 45px;
+        margin-right: 0;
+    }
+
+    .hs {
+        height: 180px; /* Smaller hero image */
+    }
+
+    /* Corrected H1 underline width for mobile */
+    .container2 h1::after {
+        width: 60px;
+        height: 4px; /* Slightly thinner underline */
+    }
+    
+    .menu-toggle {
+        display: flex; 
+        order: 3;
+        margin-left: 15px; /* Separate icon from logos */
+    }
+    
+    .navlink {
+        display: none; /* Hide menu by default */
+        top: 65px; /* Align below the smaller navbar */
+        flex-direction: column;
+        background-color: rgba(13, 17, 23, 0.95);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    
+    .navlink li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .navlink li a {
+        font-size: 16px; 
+        padding: 10px 0;
+    }
+    
+    /* --- Hero Section Fixes --- */
+    .container1 {
+        padding-top: 40px;
+        padding-bottom: 50px;
+    }
+    
+    .container1 h2 {
+        font-size: 1.7em; /* Reduced size for better wrapping */
+    }
+
+    .container1 h3 {
+        font-size: 0.9em; /* Reduced size for better wrapping */
+        line-height: 1.4;
+    }
+    
+    /* --- Container and Highlights Fixes --- */
+    .container2 {
+        max-width: 95%; /* Constrain width */
+        margin: 30px auto; 
+        padding: 20px 10px; 
+    }
+
+    /* Fix spacing on the registration page */
+    .container2.registration-container {
+        margin-top: 80px;
+    }
+
+    .container2 h1 {
+        font-size: 2em; 
+        margin-bottom: 0px;
+    }
+
+    .container2 ul {
+        padding: 0;
+    }
+    
+    .container2 li {
+        font-size: 1.1em;
+        flex: 1 1 100%; /* Make list items stack vertically */
+        margin: 10px 0;
+        padding: 15px;
+        display: flex; 
+        align-items: center; 
+    }
+
+    .container2.logo-section img {
+        height: auto; 
+        width: 200px;
+        /* margin: 10px 10px; */
+    }
+
+    /* Form specific mobile fixes */
+    .registration-container form {
+        padding: 10px;
+    }
+
+    .form-group {
+        /* Remove flex on mobile to stack label and input */
+        display: block; 
+    }
+
+    .form-group label {
+        font-size: 1em;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .submit-button {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+    
+    /* Who We Are Section Mobile Fixes */
+    .organizing-team h2 {
+        font-size: 1.8em;
+    }
+    .team-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+        gap: 20px;
+    }
+
+    /* Contact Grid Mobile Fixes */
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on mobile */
+        gap: 20px;
+    }
+    .contact-card {
+        padding: 20px;
+    }
+    .contact-card h3 {
+        font-size: 1.5em;
+    }
+    .contact-card .icon-header {
+        font-size: 3em;
+    }
+
+    /* Modal Mobile Fix */
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 15px;
+    }
+    .modal-body {
+        max-height: 60vh;
+    }
+    .modal-content h2 {
+        font-size: 1.5em;
+    }
+    .add-participant-button, .remove-participant-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    /* Result card sizing fix */
+    .result-name {
+        font-size: 1.3em;
+    }
+    .result-role, .result-phone, .result-email {
+        font-size: 1em;
+    }
+}
+
+/* ================================================= */
+/* 💻 MEDIA QUERY FOR TABLET DEVICES (769px to 1024px) */
+/* ================================================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar {padding: 10px 20px;}
+    .menu-toggle {display: none;}
+    .navlink li {margin-left: 20px;}
+    .container1 h2 {font-size: 2.3em;}
+    .container2 {max-width: 95%;}
+    .container2 li {font-size: 1.4em; flex: 1 1 45%;}
+    /* Ensure team grid is still responsive on tablet */
+    .team-grid {
+        gap: 20px;
+    }
+    /* Contact grid for tablets to ensure 2 columns */
+    .contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+        gap: 25px;
+    }
+}

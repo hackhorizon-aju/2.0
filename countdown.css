@@ -1,0 +1,162 @@
+/* --- COUNTDOWN PAGE SPECIFIC STYLES (countdown.css) --- */
+
+.countdown-container h1 {
+    margin-bottom: 30px;
+}
+
+.countdown-display {
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(13, 17, 23, 0.8);
+    border-radius: 15px;
+    border: 3px solid #0400ff;
+    box-shadow: 0 0 20px rgba(4, 0, 255, 0.5);
+    margin-bottom: 30px;
+}
+
+.countdown-message {
+    font-size: 1.8em;
+    color: #e6edf3;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.timer-elements {
+    /* Ensures Horizontal Display and centers them */
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px;
+}
+
+.time-block {
+    background-color: #1a202c;
+    border: 2px solid #0400ff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    min-width: 100px;
+    box-shadow: 0 0 10px rgba(11, 26, 226, 0.5);
+    /* Added to prevent unnecessary shrinking on small screens */
+    flex-shrink: 0; 
+}
+
+.time-block span {
+    display: block;
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #0400ff;
+    line-height: 1;
+}
+
+.time-block p {
+    font-size: 1em;
+    color: #95cdff;
+    margin-top: 5px;
+}
+
+.finished-message {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #ff3333;
+    text-align: center;
+    padding: 30px;
+    border: 2px dashed #ff3333;
+    border-radius: 10px;
+    background-color: rgba(255, 51, 51, 0.1);
+}
+
+.status-message {
+    text-align: center;
+    font-size: 1.1em;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(30, 40, 50, 0.5);
+}
+
+.creator-panel {
+    margin-top: 40px;
+    padding: 30px;
+    border: 1px solid #0400ff;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(30, 40, 50, 0.8);
+}
+
+.creator-panel h2 {
+    color: #0400ff;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.creator-panel .control-button {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.creator-panel .control-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.green-button {
+    background-color: #2bff00;
+    color: #0d1117;
+    box-shadow: 0 0 10px rgba(43, 255, 0, 0.7);
+}
+
+.green-button:not(:disabled):hover {
+    background-color: #00ff00;
+    transform: translateY(-2px);
+}
+
+.red-button {
+    background-color: #ff3333;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.7);
+}
+
+.red-button:not(:disabled):hover {
+    background-color: #cc0000;
+    transform: translateY(-2px);
+}
+
+.admin-note {
+    font-size: 0.9em;
+    color: #ff9900;
+    margin-top: 15px;
+}
+
+/* Mobile adjustments (Repeat from main CSS for standalone file) */
+@media (max-width: 600px) {
+    .timer-elements {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .time-block {
+        min-width: 80px;
+        padding: 10px 15px;
+    }
+    
+    .time-block span {
+        font-size: 2.5em;
+    }
+
+    .countdown-message {
+        font-size: 1.4em;
+    }
+    
+    .creator-panel .control-button {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+}

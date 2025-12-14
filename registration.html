@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Horizon 2.0 - Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="hh round.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://arkajainuniversity.ac.in/" target="_blank">
+            <img class="ajulogo" src="aju naac logo light.png" alt="ARKA JAIN University Logo">
+        </a>
+        <img class="hh-round" src="hh round.png" alt="Hack Horizon 2.0 Round Logo">
+        
+        <button class="menu-toggle" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
+        <ul class="navlink" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="whoweare.html">Who We Are?</a></li>
+            <li><a href="contact.html">Connect To Us</a></li>
+        </ul>
+    </nav>
+    <div class="container2 registration-container">
+        <h1 style="color: #0400ff;">Team Registration</h1>
+        <p class="form-description">Secure your team's spot. **Registration Fee: ₹800 per team.** Minimum 3, Maximum 5 members. Fields marked with * are mandatory.</p>
+
+        <form id="registration-form" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label for="team-name"><i class="fas fa-users"></i> Team Name *</label>
+                <input type="text" id="team-name" name="team_name" placeholder="e.g., The Code Breakers" required>
+            </div>
+            
+            <div id="participants-container">
+                
+                <fieldset class="participant-fieldset mandatory-participant" data-index="1">
+                    <legend>Participant 1 (Team Leader) *</legend>
+                    <div class="form-group"><label for="p1-name">Full Name *</label><input type="text" id="p1-name" name="p1_name" placeholder="Name" required></div>
+                    <div class="form-group"><label for="p1-mobile">Mobile Number *</label><input type="number" id="p1-mobile" name="p1_mobile" placeholder="9876543210" required></div>
+                    <div class="form-group"><label for="p1-email">Email Address *</label><input type="email" id="p1-email" name="p1_email" placeholder="email@example.com" required></div>
+                </fieldset>
+
+                <fieldset class="participant-fieldset mandatory-participant" data-index="2">
+                    <legend>Participant 2 *</legend>
+                    <div class="form-group"><label for="p2-name">Full Name *</label><input type="text" id="p2-name" name="p2_name" placeholder="Name" required></div>
+                    <div class="form-group"><label for="p2-mobile">Mobile Number *</label><input type="number" id="p2-mobile" name="p2_mobile" placeholder="9876543210" required></div>
+                    <div class="form-group"><label for="p2-email">Email Address *</label><input type="email" id="p2-email" name="p2_email" placeholder="email@example.com" required></div>
+                </fieldset>
+
+                <fieldset class="participant-fieldset mandatory-participant" data-index="3">
+                    <legend>Participant 3 *</legend>
+                    <div class="form-group"><label for="p3-name">Full Name *</label><input type="text" id="p3-name" name="p3_name" placeholder="Name" required></div>
+                    <div class="form-group"><label for="p3-mobile">Mobile Number *</label><input type="number" id="p3-mobile" name="p3_mobile" placeholder="9876543210" required></div>
+                    <div class="form-group"><label for="p3-email">Email Address *</label><input type="email" id="p3-email" name="p3_email" placeholder="email@example.com" required></div>
+                </fieldset>
+                
+                <fieldset class="participant-fieldset optional-participant" data-index="4">
+                    <legend>Participant 4 (Optional)</legend>
+                    <div class="form-group"><label for="p4-name">Full Name</label><input type="text" id="p4-name" name="p4_name" placeholder="Name"></div>
+                    <div class="form-group"><label for="p4-mobile">Mobile Number</label><input type="tel" id="p4-mobile" name="p4_mobile" placeholder="9876543210"></div>
+                    <div class="form-group"><label for="p4-email">Email Address</label><input type="email" id="p4-email" name="p4_email" placeholder="email@example.com"></div>
+                </fieldset>
+                
+                <fieldset class="participant-fieldset optional-participant" data-index="5">
+                    <legend>Participant 5 (Optional)</legend>
+                    <div class="form-group"><label for="p5-name">Full Name</label><input type="text" id="p5-name" name="p5_name" placeholder="Name"></div>
+                    <div class="form-group"><label for="p5-mobile">Mobile Number</label><input type="tel" id="p5-mobile" name="p5_mobile" placeholder="9876543210"></div>
+                    <div class="form-group"><label for="p5-email">Email Address</label><input type="email" id="p5-email" name="p5_email" placeholder="email@example.com"></div>
+                </fieldset>
+
+            </div>
+            
+            <hr style="margin: 30px 0; border-color: #0400ff;">
+
+            <h2 style="color: #ffffff; text-align: center; margin-bottom: 20px;">Payment Details (₹800)</h2>
+            
+            <div class="qr-code-section">
+                <h2>Scan to Pay via UPI</h2>
+                <p style="margin-bottom: 10px; color: #333;">Please scan the QR code below to make the **₹800** payment.</p>
+                <div class="qr-code-box">
+                    <img src="paymnet.jpg" alt="UPI QR Code for Payment">
+                </div>
+                <div class="upi-details">
+    <p>Or Pay using UPI ID:</p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <p class="upiid" id="upi-id-to-copy"><strong>arkajainuniversityuo.68019858@hdfcbank</strong></p>
+        <button onclick="copyUpiId()" class="copy-button" type="button" aria-label="Copy UPI ID">
+            <i class="fas fa-copy"></i>
+        </button>
+    </div>
+    <span id="copy-message" style="color: green; font-size: 0.9em; margin-top: 5px; display: none;">Copied!</span>
+</div>
+            <div class="form-group">
+                <label for="payment_proof" style="color: #000000;" ><i class="fas fa-camera-retro"></i> Attach Payment Screenshot *</label>
+                <input type="file" enctype="multipart/form-data" id="payment_proof" name="payment_proof" accept="image/*" required>
+                <img id="payment-preview" src="" alt="Payment Preview" style="display:none; margin-top:10px; max-width:100%; border:1px solid #ccc; border-radius:4px;">
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="agree-t-c" name="agree_t_c" required>
+                <label for="agree-t-c" style="display: inline; margin-left: 10px; color: #000000;">
+                    I have read and agree to the 
+                    <a href="#" id="t-c-link" style="color: #0400ff; text-decoration: underline;">Terms and Conditions</a>. *
+                </label>
+            </div>
+
+            <p id="loading-message" class="loading-message" style="display: none; color:#000000">
+                <i class="fas fa-spinner fa-spin"></i> Submitting registration, please wait...
+            </p>
+            <div id="alert-success" class="alert-success" style="color: #000000;"></div>
+            <div id="alert-error" class="alert-error" style="color: #000000;"></div>
+            
+            <button type="submit" class="submit-button">Submit Registration</button>
+            <p class="form-note" style="color: #aaa;">Please ensure all mandatory participant details (P1-P3) and payment proof are correct before submitting.</p>
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Hack Horizon 2.0. All rights reserved.</p>
+    </footer>
+
+    <div id="tc-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" style="color: #33aaff;">&times;</span>
+            <h2 style="color: #0400ff;">Hack Horizon 2.0 - Terms and Conditions</h2>
+            <div class="modal-body">
+                <ol style="padding-left: 20px;">
+                    <li>**Team Size:** Teams must consist of a minimum of 3 and a maximum of 5 participants.</li>
+                    <li>**Registration Fee:** A non-refundable fee of **₹800** per team is required for entry.</li>
+                    <li>**Payment Proof:** A clear screenshot or proof of payment must be attached during registration.</li>
+                    <li>**Consent Form:** Participants must bring their consent form filled in the form of Hard Copy.</li>
+                    <li>**Eligibility:** Participants must be currently enrolled university/college students.</li>
+                    <li>**Originality:** All submitted projects must be original work created entirely during the 24-hour hackathon period.</li>
+                    <li>**Code of Conduct:** All participants must adhere to the hackathon's Code of Conduct.</li>
+                    <li>**Intellectual Property:** Teams retain the intellectual property rights to their creations.</li>
+                    <li>**Judging:** Judges' decisions are final and binding.</li>
+                </ol>
+            </div>
+            <button id="modal-agree-button" class="submit-button" style="width: 50%; margin: 20px auto 0; background-color: #0400ff; color: white; border: none;">I Agree</button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Hamburger Menu Script ---
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active'); 
+        });
+        
+        // --- UPI Copy Function ---
+        function copyUpiId() {
+            const upiIdElement = document.getElementById('upi-id-to-copy');
+            const textToCopy = upiIdElement.textContent; 
+            const copyMessage = document.getElementById('copy-message');
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                copyMessage.style.display = 'inline';
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                alert("Copy failed. Please copy the UPI ID manually: " + textToCopy);
+            });
+        }
+        // --------------------------------------------------------
+
+        // REPLACE THIS URL WITH YOUR NEW APPS SCRIPT WEB APP URL
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwqX50CYT-_MtMeJ4GD2vStNWk7ufy3ZM-21rXtlNMEN7pOxni45WkH_Yy7lZlnKBs/exec"; 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registration-form');
+            const submitButton = form.querySelector('.submit-button');
+            const loadingMessage = document.getElementById('loading-message');
+            const alertSuccess = document.getElementById('alert-success');
+            const alertError = document.getElementById('alert-error');
+            const paymentInput = document.getElementById('payment_proof');
+            const paymentPreview = document.getElementById('payment-preview');
+            const tcModal = document.getElementById('tc-modal');
+            const tcLink = document.getElementById('t-c-link');
+            const closeModal = document.querySelector('.close-button');
+            const modalAgreeButton = document.getElementById('modal-agree-button');
+            const agreeCheckbox = document.getElementById('agree-t-c');
+
+            // --- FIXED: Safely handle file preview ---
+            paymentInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        if(paymentPreview) {
+                            paymentPreview.src = event.target.result;
+                            paymentPreview.style.display = 'block'; 
+                            paymentPreview.classList.add('show');
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    if(paymentPreview) {
+                        paymentPreview.style.display = 'none';
+                        paymentPreview.classList.remove('show');
+                        paymentPreview.src = '';
+                    }
+                }
+            });
+            
+            tcLink.addEventListener('click', (e) => { e.preventDefault(); tcModal.style.display = 'block'; });
+            closeModal.addEventListener('click', () => { tcModal.style.display = 'none'; });
+            window.addEventListener('click', (event) => { if (event.target == tcModal) { tcModal.style.display = 'none'; } });
+            modalAgreeButton.addEventListener('click', () => { 
+                agreeCheckbox.checked = true;
+                tcModal.style.display = 'none';
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (!validateForm(form)) {
+                    return; 
+                }
+                
+                submitButton.disabled = true;
+                loadingMessage.style.display = 'block';
+                alertSuccess.style.display = 'none';
+                alertError.style.display = 'none';
+                
+                const fileInput = document.getElementById('payment_proof');
+                const file = fileInput.files[0];
+                
+                if (!file) {
+                    alertError.textContent = "Please select a payment proof image.";
+                    alertError.style.display = 'block';
+                    submitButton.disabled = false;
+                    loadingMessage.style.display = 'none';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64Data = event.target.result.split(',')[1];
+                    
+                    const formData = new FormData(form);
+                    formData.delete('payment_proof');
+                    formData.append('payment_proof', base64Data);
+                    formData.append('payment_proof_name', file.name);
+                    formData.append('payment_proof_type', file.type);
+                    
+                    const urlEncodedData = new URLSearchParams(formData).toString();
+                    
+                    fetch(WEB_APP_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: urlEncodedData,
+                        redirect: 'follow'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Response:', data);
+                        if (data.result === "success" || data.success) {
+                            alertSuccess.textContent = "Registration successful! Team: " + form.querySelector('[name="team_name"]').value;
+                            alertSuccess.style.display = 'block';
+                            form.reset();
+                            if(paymentPreview) {
+                                paymentPreview.style.display = 'none';
+                                paymentPreview.classList.remove('show');
+                            }
+                        } else {
+                            throw new Error(data.error || data.message || "Registration failed.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Submission Error:', error);
+                        alertError.textContent = "Error: " + error.message;
+                        alertError.style.display = 'block';
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        loadingMessage.style.display = 'none';
+                    });
+                };
+                
+                reader.onerror = function() {
+                    alertError.textContent = "Error reading file. Please try again.";
+                    alertError.style.display = 'block';
+                    submitButton.disabled = false;
+                    loadingMessage.style.display = 'none';
+                };
+                
+                reader.readAsDataURL(file);
+            });
+            
+            function validateForm(form) {
+                const teamName = form.querySelector('[name="team_name"]').value.trim();
+                const agreeCheckbox = form.querySelector('[name="agree_t_c"]');
+                const paymentProof = form.querySelector('[name="payment_proof"]').value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!teamName) { alert("Team Name is mandatory."); form.querySelector('[name="team_name"]').focus(); return false; }
+                if (!agreeCheckbox.checked) { alert("You must agree to the Terms and Conditions to register."); return false; }
+                if (!paymentProof) { alert("Please attach the payment screenshot proof."); return false; }
+
+                for (let i = 1; i <= 3; i++) {
+                    const name = form.querySelector(`[name="p${i}_name"]`).value.trim();
+                    const mobile = form.querySelector(`[name="p${i}_mobile"]`).value.trim();
+                    const email = form.querySelector(`[name="p${i}_email"]`).value.trim();
+
+                    if (!name || !mobile || !email) {
+                        alert(`Participant ${i} (Mandatory) details are incomplete. Please fill in Name, Mobile, and Email.`);
+                        form.querySelector(`[name="p${i}_name"]`).focus();
+                        return false;
+                    }
+                    if (!emailRegex.test(email)) {
+                        alert(`Participant ${i}'s email address is invalid.`);
+                        form.querySelector(`[name="p${i}_email"]`).focus();
+                        return false;
+                    }
+                }
+                
+                for (let i = 4; i <= 5; i++) {
+                    const name = form.querySelector(`[name="p${i}_name"]`).value.trim();
+                    const mobile = form.querySelector(`[name="p${i}_mobile"]`).value.trim();
+                    const email = form.querySelector(`[name="p${i}_email"]`).value.trim();
+                    
+                    if (name || mobile || email) {
+                        if (!name || !mobile || !email) {
+                            alert(`Participant ${i} is partially filled. If you include an optional member, you must provide their Name, Mobile, and Email.`);
+                            form.querySelector(`[name="p${i}_name"]`).focus();
+                            return false;
+                        }
+                        if (!emailRegex.test(email)) {
+                            alert(`Participant ${i}'s email address is invalid.`);
+                            form.querySelector(`[name="p${i}_email"]`).focus();
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>

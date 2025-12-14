@@ -1,0 +1,194 @@
+    <script>
+        // --- Hamburger Menu Script ---
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active'); 
+        });
+        
+        // --- UPI Copy Function ---
+        function copyUpiId() {
+            const upiIdElement = document.getElementById('upi-id-to-copy');
+            const textToCopy = upiIdElement.textContent; // Use textContent for clean text
+            const copyMessage = document.getElementById('copy-message');
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                copyMessage.style.display = 'inline';
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                alert("Copy failed. Please copy the UPI ID manually: " + textToCopy);
+            });
+        }
+        // --------------------------------------------------------
+
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1X1XbhALrQz5ooV7mbzKypr_EwWTQmLhyIal4HLX2WsycR3zIorUZiAjfsa7KCprl/exec"; 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registration-form');
+            const submitButton = form.querySelector('.submit-button');
+            const loadingMessage = document.getElementById('loading-message');
+            const alertSuccess = document.getElementById('alert-success');
+            const alertError = document.getElementById('alert-error');
+            const paymentInput = document.getElementById('payment_proof');
+            const paymentPreview = document.getElementById('payment-preview');
+            const tcModal = document.getElementById('tc-modal');
+            const tcLink = document.getElementById('t-c-link');
+            const closeModal = document.querySelector('.close-button');
+            const modalAgreeButton = document.getElementById('modal-agree-button');
+            const agreeCheckbox = document.getElementById('agree-t-c');
+
+            paymentInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        paymentPreview.src = event.target.result;
+                        paymentPreview.classList.add('show');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    paymentPreview.classList.remove('show');
+                    paymentPreview.src = '';
+                }
+            });
+            
+            tcLink.addEventListener('click', (e) => { e.preventDefault(); tcModal.style.display = 'block'; });
+            closeModal.addEventListener('click', () => { tcModal.style.display = 'none'; });
+            window.addEventListener('click', (event) => { if (event.target == tcModal) { tcModal.style.display = 'none'; } });
+            modalAgreeButton.addEventListener('click', () => { 
+                agreeCheckbox.checked = true;
+                tcModal.style.display = 'none';
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (!validateForm(form)) {
+                    return; 
+                }
+                
+                submitButton.disabled = true;
+                loadingMessage.style.display = 'block';
+                alertSuccess.style.display = 'none';
+                alertError.style.display = 'none';
+                
+                const fileInput = document.getElementById('payment_proof');
+                const file = fileInput.files[0];
+                
+                if (!file) {
+                    alertError.textContent = "Please select a payment proof image.";
+                    alertError.style.display = 'block';
+                    submitButton.disabled = false;
+                    loadingMessage.style.display = 'none';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64Data = event.target.result.split(',')[1];
+                    
+                    const formData = new FormData(form);
+                    formData.delete('payment_proof');
+                    formData.append('payment_proof', base64Data);
+                    formData.append('payment_proof_name', file.name);
+                    formData.append('payment_proof_type', file.type);
+                    
+                    const urlEncodedData = new URLSearchParams(formData).toString();
+                    
+                    fetch(WEB_APP_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: urlEncodedData,
+                        redirect: 'follow'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Response:', data);
+                        if (data.result === "success" || data.success) {
+                            alertSuccess.textContent = "Registration successful! Team: " + form.querySelector('[name="team_name"]').value;
+                            alertSuccess.style.display = 'block';
+                            form.reset();
+                            paymentPreview.classList.remove('show');
+                        } else {
+                            throw new Error(data.error || data.message || "Registration failed.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Submission Error:', error);
+                        alertError.textContent = "Error: " + error.message;
+                        alertError.style.display = 'block';
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        loadingMessage.style.display = 'none';
+                    });
+                };
+                
+                reader.onerror = function() {
+                    alertError.textContent = "Error reading file. Please try again.";
+                    alertError.style.display = 'block';
+                    submitButton.disabled = false;
+                    loadingMessage.style.display = 'none';
+                };
+                
+                reader.readAsDataURL(file);
+            });
+            
+            function validateForm(form) {
+                const teamName = form.querySelector('[name="team_name"]').value.trim();
+                const agreeCheckbox = form.querySelector('[name="agree_t_c"]');
+                const paymentProof = form.querySelector('[name="payment_proof"]').value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!teamName) { alert("Team Name is mandatory."); form.querySelector('[name="team_name"]').focus(); return false; }
+                if (!agreeCheckbox.checked) { alert("You must agree to the Terms and Conditions to register."); return false; }
+                if (!paymentProof) { alert("Please attach the payment screenshot proof."); return false; }
+
+                for (let i = 1; i <= 3; i++) {
+                    const name = form.querySelector(`[name="p${i}_name"]`).value.trim();
+                    const mobile = form.querySelector(`[name="p${i}_mobile"]`).value.trim();
+                    const email = form.querySelector(`[name="p${i}_email"]`).value.trim();
+
+                    if (!name || !mobile || !email) {
+                        alert(`Participant ${i} (Mandatory) details are incomplete. Please fill in Name, Mobile, and Email.`);
+                        form.querySelector(`[name="p${i}_name"]`).focus();
+                        return false;
+                    }
+                    if (!emailRegex.test(email)) {
+                        alert(`Participant ${i}'s email address is invalid.`);
+                        form.querySelector(`[name="p${i}_email"]`).focus();
+                        return false;
+                    }
+                }
+                
+                for (let i = 4; i <= 5; i++) {
+                    const name = form.querySelector(`[name="p${i}_name"]`).value.trim();
+                    const mobile = form.querySelector(`[name="p${i}_mobile"]`).value.trim();
+                    const email = form.querySelector(`[name="p${i}_email"]`).value.trim();
+                    
+                    if (name || mobile || email) {
+                        if (!name || !mobile || !email) {
+                            alert(`Participant ${i} is partially filled. If you include an optional member, you must provide their Name, Mobile, and Email.`);
+                            form.querySelector(`[name="p${i}_name"]`).focus();
+                            return false;
+                        }
+                        if (!emailRegex.test(email)) {
+                            alert(`Participant ${i}'s email address is invalid.`);
+                            form.querySelector(`[name="p${i}_email"]`).focus();
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>
